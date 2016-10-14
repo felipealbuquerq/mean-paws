@@ -398,7 +398,7 @@ db.Pet.remove({}, function(err, pets){
         console.log('we fucked up');
         return;
       }
-      pet.owner = foundOwner;
+      pet.owner = foundOwner._id;
       pet.save(function(err, savedPet) {
         if (err) {
           return console.log(err);
