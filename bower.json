@@ -1,0 +1,21 @@
+
+{
+  "name": "paws",
+  "version": "1.0.31A",
+  "authors": [
+    "GA SF WDI"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.7",
+    "angular": "~1.5.3",
+    "angular-route": "~1.5.3"
+  }
+}
