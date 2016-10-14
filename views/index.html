@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="http://i66.tinypic.com/6r3w4m.jpg">
+    <title>paws</title>
+
+    <!-- STYLESHEETS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script> -->
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/PetsIndexController.js"></script>
+    <script src="scripts/controllers/PetsShowController.js"></script>
+
+  </head>
+  <body>
+
+    <div id="header">
+      <!-- NAVIGATION -->
+      <ul class="topnav" id="myTopnav">
+        <li><a href="/">home</a></li>
+        <li><a href="/profile">about</a></li>
+        <li><a href="mailto:info@paws.org">contact</a></li>
+        <li class="icon">
+          <a href="javascript:void(0);">&#9776;</a>
+        </li>
+      </ul>
+      <div class="jumbotron">
+        <div class="container">
+          <!-- LOGO, TITLE, HEADLINE -->
+          <h1>.paws(<img id="logo" src="http://i66.tinypic.com/2j5nx5c.png"/>)</h1>
+          <p>find your new best friend&trade;</p>
+          <button class='btn btn-primary addPet'> &#10010; add a pet</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <section class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <!-- SEARCH BY NAME -->
+            <div class="custom-search-input">
+              <div class="input-group col-md-12">
+                  <input type="text" class="form-control input-lg" name="name-search" id="search-query" placeholder="search by name" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-info btn-lg" type="button" id="search-button">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            <br>
+          <!-- SEARCH BY TYPE -->
+            <div class="custom-search-input">
+              <div class="input-group col-md-12">
+                <div id="drop-search" class="input-group col-md-12">
+                  <select class="form-control input-lg" placeholder="Search by type">
+                    <option value="" disabled selected>search by type</option>
+                    <option value="all">all</option>
+                    <option value="dog">dogs</option>
+                    <option value="cat">cats</option>
+                    <option value="other">other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br>
+            <h2>pets available for adoption</h2>
+          </div>
+        </div>
+        <div ng-app="paws" ng-view>
+        </div>
+
+       <!-- begin petModal: this is not visible until you call .modal() on it -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="choiceModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">post a pet</h4>
+          </div>
+          <div class="modal-body">
+            <fieldset class='form-horizontal'>
+            <h3>are you a registered owner?</h3>
+            </fieldset>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="isOwner">yes</button>
+            <button type="button" class="btn btn-primary" id="isNotOwner">no</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="nameModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">post a pet</h4>
+        </div>
+        <div class="modal-body">
+          <fieldset class='form-horizontal'>
+          <h3>please enter your first name</h3>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="ownerName">name</label>
+          <div class="col-md-4">
+          <input id="ownerName" name="ownerName" type="text" placeholder="john" class="form-control input-md" required="">
+          </div>
+        </div>
+          </fieldset>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default" id="registeredName">submit</button>
+        </div>
+      </div>
+    </div>
+   </div><!-- /.modal-content -->
+ </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="newOwner">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">post a pet</h4>
+          </div>
+          <div class="modal-body">
+            <fieldset class='form-horizontal'>
+              <h3>owner information</h3>
+            <!-- Owner name input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ownerName">name</label>
+              <div class="col-md-4">
+              <input id="newOwnerName" name="ownerName" type="text" placeholder="john smith" class="form-control input-md" required="">
+              </div>
+            </div>
+            <!-- Owner location input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ownerLocation">location</label>
+              <div class="col-md-4">
+              <input id="newOwnerLocation" name="ownerLocation" type="text" placeholder="san francisco, ca" class="form-control input-md" required="">
+              </div>
+            </div>
+            <!-- Owner email input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ownerEmail">email</label>
+              <div class="col-md-4">
+              <input id="newOwnerEmail" name="ownerEmail" type="text" placeholder="mail@example.com" class="form-control input-md" required="">
+              </div>
+            </div>
+            </fieldset>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+            <button type="button" class="btn btn-primary" id="addTheOwner">submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="newPet">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">post a pet</h4>
+          </div>
+          <div class="modal-body">
+
+            <fieldset class='form-horizontal'>
+            <h3>pet information</h3>
+            <!-- Pet name input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="petName">pet name</label>
+              <div class="col-md-4">
+              <input id="newPetName" name="petName" type="text" placeholder="squeaky mcsqueaks" class="form-control input-md" required="">
+              </div>
+            </div>
+
+            <!-- Pet type input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="petType">pet type</label>
+              <div class="col-md-4">
+              <select id="petType" name="petType" class="form-control input-md">
+                <option value="dog">dog</option>
+                <option value="cat">cat</option>
+                <option value="bird">bird</option>
+                <option value="other">other</option>
+              </select>
+
+              </div>
+            </div>
+
+            <!-- Pet age input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="petAge">age</label>
+              <div class="col-md-4">
+              <input id="petAge" name="petAge" type="text" placeholder="3 months" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Pet gender input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="petGender">gender</label>
+              <div class="col-md-4">
+
+              <label class="petGender">
+              <input id="petGenderM" type="radio" name="petGender" value="male" class=""> male </label><label><input id="petGenderF" type="radio" name="petGender" value="female" class=""> female</label>
+              </div>
+            </div>
+
+            <!-- Pet fixed/vaccination input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="petMedical">medical</label>
+              <div class="col-md-4">
+                <label class="petMedical">
+                <input id="petFixed" type="checkbox" name="petFixed" value="fixed"> fixed </label>
+                <label><input id="petVaccination" type="checkbox" name="petVaccination" value="vaccinations"> vaccinations</label>
+              </div>
+            </div>
+            <!-- Pet description input -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="petDescription">brief description</label>
+              <div class="col-md-4">
+              <textarea id="petDescription" name="petDescription" type="text" placeholder="fluffy is the best cat" class="form-control input-md" required=""></textarea>
+              </div>
+            </div>
+
+            <!-- Pet image input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="petPicture">image url</label>
+              <div class="col-md-4">
+              <input id="petPicture" name="petPicture" type="text" placeholder="http://image.jpg" class="form-control input-md" required="">
+              </div>
+            </div>
+
+            </fieldset>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+            <button type="button" class="btn btn-primary" id="addThePet">submit</button>
+
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+  </body>
+</html>

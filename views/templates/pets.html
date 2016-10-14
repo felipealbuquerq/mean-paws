@@ -1,0 +1,62 @@
+      <!-- PETS -->
+        <div id='pets'>
+<!--           <script id='pet-template' type='text/x-handlebars-template'> -->
+          <!-- ONE PET -->
+            <div ng-repeat = "pet in petsIndexCtrl.pets" class="row pet" data-pet-id="{{_id}}">
+              <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+
+
+                <!-- BEGIN PET INTERNAL ROW -->
+                    <div class='row'>
+                      <div class="col-md-3 col-xs-12 thumbnail pet-image">
+                        <img src={{pet.picture}}>
+                      </div>
+
+                      <div class="col-md-9 col-xs-12">
+                        <ul class="list-group">
+                          <li class="list-group-item">
+
+                            <div class="original-form" style="margin: 10px;">
+                            <span class='inline-header'>
+                              <a ng-href="/pets/{{pet._id}}"><h2 class='inline-header' style='display: inline-block; margin: 0px;'>{{pet.name}} </h2> </a>
+                              <h4 class='inline-header' style='display: inline-block; float: right'>{{pet.owner.location}}</h4>
+                            </span>
+                              <h4 class='inline-header'> {{pet.age}}, {{pet.gender}} </h4> 
+
+                            <span id="owned-by">owned by <a href='mailto:{{owner.email}}'>{{owner.name}}</a></span>
+                              <span class='input-pet-name' style='display:none;'>
+                                <input id="petName" name="petName" type="text" value="{{name}}">
+                            </span>
+                            </br>
+                            <span id="interest-count"><b>{{pet.interested}} people interested in me</b></span>
+                            <span class='input-pet-name' style='display:none;'>
+                              <input id="petName" name="petName" type="text" value="{{pet.name}}">
+                            </span>
+
+                           </div>
+                          
+                         <!-- UPDATE FORM (HIDDEN) -->
+
+                                 
+                        </li>
+
+                       </ul>
+                     </div>
+
+                   </div>
+                  <!-- end of pet internal row -->
+
+                   
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end one pet -->
+        </script>
+
+      </div>
+    </section>
