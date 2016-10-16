@@ -34,7 +34,7 @@
         <div id='pets'>
 <!--           <script id='pet-template' type='text/x-handlebars-template'> -->
           <!-- ONE PET -->
-            <div ng-repeat = "pet in petsIndexCtrl.pets | orderBy: 'type' | filter: searchType | filter: searchName" class="row pet" data-pet-id="{{_id}}">
+            <div ng-repeat = "pet in petsIndexCtrl.pets | filter: searchType | filter: searchName" class="row pet" data-pet-id="{{_id}}">
               <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                   <div class="panel-body">
