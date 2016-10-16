@@ -1,8 +1,40 @@
       <!-- PETS -->
+      <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <!-- SEARCH BY NAME -->
+            <div class="custom-search-input">
+              <div class="input-group col-md-12">
+                  <input type="text" class="form-control input-lg" name="name-search" id="search-query" placeholder="search by name" ng-model="searchName">
+                  <span class="input-group-btn">
+                    <button class="btn btn-info btn-lg" type="button" id="search-button">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            <br>
+          <!-- SEARCH BY TYPE -->
+            <div class="custom-search-input">
+              <div class="input-group col-md-12">
+                <div id="drop-search" class="input-group col-md-12">
+                  <select class="form-control input-lg" placeholder="Search by type" ng-model="searchType">
+                    <option value="" disabled selected>search by type</option>
+                    <option value="">all</option>
+                    <option value="dog">dogs</option>
+                    <option value="cat">cats</option>
+                    <option value="other">other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br>
+            <h2>pets available for adoption</h2>
+          </div>
+        </div>
         <div id='pets'>
 <!--           <script id='pet-template' type='text/x-handlebars-template'> -->
           <!-- ONE PET -->
-            <div ng-repeat = "pet in petsIndexCtrl.pets" class="row pet" data-pet-id="{{_id}}">
+            <div ng-repeat = "pet in petsIndexCtrl.pets | orderBy: 'type' | filter: searchType | filter: searchName" class="row pet" data-pet-id="{{_id}}">
               <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                   <div class="panel-body">
@@ -25,7 +57,7 @@
                             </span>
                               <h4 class='inline-header'> {{pet.age}}, {{pet.gender}} </h4> 
 
-                            <span id="owned-by">owned by <a href='mailto:{{owner.email}}'>{{owner.name}}</a></span>
+                            <span id="owned-by">owned by <a href='mailto:{{pet.owner.email}}'>{{pet.owner.name}}</a></span>
                               <span class='input-pet-name' style='display:none;'>
                                 <input id="petName" name="petName" type="text" value="{{name}}">
                             </span>
@@ -46,17 +78,13 @@
                      </div>
 
                    </div>
-                  <!-- end of pet internal row -->
-
-                   
-
-
+                  <!-- end of pet internal row -->                
                 </div>
               </div>
             </div>
           </div>
           <!-- end one pet -->
-        </script>
+           </script>
 
       </div>
     </section>
