@@ -14,7 +14,7 @@ function config(   $routeProvider,  $locationProvider   ) {
       templateUrl: '/templates/petshow',
       controllerAs: 'petsShowCtrl',
       controller: 'PetsShowController'
-    });
+    })
 
   $locationProvider.html5Mode({
     enabled: true,
@@ -49,13 +49,6 @@ $(document).ready(function() {
 
 	setStorage();
 	console.log(localStorage.getItem('clicked'))
-
-//get all pets as site turns on
-	// $.get('/api/pets').success(function(pets) {
-	// 	pets.forEach(function(pet) {
-	// 		// renderPet(pet);
-	// 	});
-	// });
 
 //on submit, post new animal to server and refresh page (full refresh)
     $('.addPet').on('click', function(e) {
@@ -287,24 +280,6 @@ $('#pets').on('click', '.save-changes', function(e) {
 			}
 	});
 })
-	
-// Sort by type
-
-	$('#drop-search').on('change', function() {
-		var selectedType = $('#drop-search :selected').val();
-		console.log(selectedType);
-			$.ajax({
-				method: 'GET',
-				url: '/api/search?type=' + selectedType,
-				success: function(data) {
-					$(".pet").empty();
-					data.forEach(function(pet) {
-						renderPet(pet);
-					});
-				} 
-			})
-		})
-
 
 // CLICK TO SEARCH PET NAME
 $('#search-button').on('click', function(e) {
@@ -362,22 +337,6 @@ $('#pets').on('click', '.like-pet', function(e) {
 	    $('#songModal').modal();
 	})
 })
-
-function renderPet(pet) {
-	console.log('rendering pet', pet);
-	var petHtml = $('#pet-template').html();
-	var petsTemplate = Handlebars.compile(petHtml);
-	var html = petsTemplate(pet);
-	$('#pets').append(html);
-}
-
-function reRenderPet(pet) {
-	console.log('rendering pet', pet);
-	var petHtml = $('#pet-template').html();
-	var petsTemplate = Handlebars.compile(petHtml);
-	var html = petsTemplate(pet);
-	return html;
-}
 
 function handleSuccess() {
 	console.log('success')
