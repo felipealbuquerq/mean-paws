@@ -14,7 +14,7 @@ var PetSchema = new Schema({
 	vaccination: String,
 	fixed: String,
 	gender: String,
-	picture: String,
+	pictures: [ String ],
 	owner: {
 		type: Schema.Types.ObjectId,
 		ref: 'Owner'
