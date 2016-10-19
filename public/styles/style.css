@@ -13,11 +13,10 @@ h1 {
 }
 
 #logo {
-  height: 45px;
-  width: 45px;
+  height: 25px;
+  width: 25px;
   display: inline-block;
-  margin-right: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .inline-header {
