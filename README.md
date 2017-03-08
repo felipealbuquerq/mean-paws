@@ -11,7 +11,7 @@ The user is able to search for a pet by name or by type (dog, cat, other). If th
 
 On the other hand, if a user wishes to list his or her pet for adoption, he or she may simply click the "add a pet" button. This will navigate the user to a form where he or she can enter the information required to add the furry friend into our <b>paws</b> database.
 
-> **See the published project on [Heroku](https://aqueous-atoll-30376.herokuapp.com/).**
+> **See the published project on [Heroku](https://pawsadopt.herokuapp.com/).**
 
 <p><i>The original wireframes for the profile card created with Moqups</i></p>
 <img src="http://i63.tinypic.com/jqkilk.png" width="400">
